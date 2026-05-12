@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS teams (
     short_name               VARCHAR(10),
     fpl_team_id              INTEGER UNIQUE,   -- FPL API: teams[].id (changes each season)
     fpl_team_code            INTEGER UNIQUE,   -- FPL API: teams[].code (permanent, used in badge URLs)
-    footballdata_team_id     INTEGER,          -- football-data.org team ID
+    apisports_team_id        INTEGER,          -- api-sports.io team ID
 
     -- FPL strength ratings (used in scoring model)
     strength_overall_home    INTEGER,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS players (
     known_name                   VARCHAR(100),          -- FPL: known_name (e.g. "Salah" vs "Mohamed Salah")
     position                     VARCHAR(3),            -- GKP, DEF, MID, FWD (derived from element_type on insert)
     fpl_player_id                INTEGER UNIQUE,        -- FPL API: elements[].id
-    footballdata_player_id       INTEGER,               -- football-data.org player ID
+    apisports_player_id          INTEGER,               -- api-sports.io player ID
 
     -- Availability
     player_status                VARCHAR(1),            -- FPL: 'a' available, 'd' doubtful, 'i' injured, 's' suspended, 'u' unavailable
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS fixtures (
     fixture_id              SERIAL PRIMARY KEY,
     league_id               INTEGER REFERENCES leagues(league_id),
     fpl_fixture_id          INTEGER UNIQUE,             -- FPL API: fixtures[].id (PL only, null for other leagues)
-    footballdata_fixture_id INTEGER,                    -- football-data.org fixture ID
+    apisports_fixture_id    INTEGER,                    -- api-sports.io fixture ID
     home_team_id            INTEGER REFERENCES teams(team_id),
     away_team_id            INTEGER REFERENCES teams(team_id),
     gameweek                INTEGER,                    -- FPL: event id / matchday number
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS player_stats (
     expected_assists             NUMERIC(6,2),
     expected_goal_involvements   NUMERIC(6,2),
     expected_goals_conceded      NUMERIC(6,2),
-    
+
     -- Calculated by pipeline
     form_score                   NUMERIC(5,2),
     created_at                   TIMESTAMP DEFAULT NOW(),
