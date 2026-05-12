@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# json files to look at FPL api data
+# bootstrap is 92k lines and fixtures is 130k lines
+# doesnt need to be in github
+fpl_bootstrap.json
+fpl_fixtures.json
