@@ -17,7 +17,6 @@ A football analytics platform for fans in the Premier League. The core feature i
 | Supabase Auth | Authentication | Manages sessions, JWTs, Google OAuth out of the box |
 | Upstash Redis | Cache | In-memory, microsecond reads — sits in front of DB for hot data |
 | FPL API | Data source | Free, no key, rich player stats — Premier League only |
-| football-data.org | Data source | Free tier covers all 5 leagues — fixtures, results, standings |
 
 ---
 
