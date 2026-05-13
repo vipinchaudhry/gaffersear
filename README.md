@@ -39,7 +39,7 @@ Supabase Auth handles the full OAuth flow in the browser. The resulting JWT is s
 |-------|---------------|
 | leagues | Supported leagues — name, code (e.g. PL), country |
 | teams | Club data, mapped to IDs from (both) external APIs |
-| players | Player records — position, availability, FPL (and external API IDs potentially in V2) |
+| players | Player records — position, availability, FPL (and external API IDs potentially in V3) |
 | fixtures | Match data — date, gameweek, home/away difficulty ratings (1–5), result |
 | player_stats | Per-match stats — goals, assists, minutes, cards, calculated form score |
 | picks | Pre-calculated composite scores per player per gameweek, with component breakdown |
@@ -124,3 +124,4 @@ TODO: Supabase local setup instructions
 
 - **V1** — Rule-based scoring model: form 40%, fixture difficulty 30%, home/away advantage 10%, availability 20%
 - **V2** — Rule-based model replaced with an ML model trained on data collected by the V1 pipeline
+- **V3** — Add the existing features for more leagues (LaLiga, Bundesliga, Ligue1, SerieA, WC, EC, etc.)
