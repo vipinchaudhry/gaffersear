@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS teams (
     short_name               VARCHAR(10),
     fpl_team_id              INTEGER UNIQUE,   -- FPL API: teams[].id (changes each season)
     fpl_team_code            INTEGER UNIQUE,   -- FPL API: teams[].code (permanent, used in badge URLs)
-    apisports_team_id        INTEGER,          -- api-sports.io team ID
+  --apisports_team_id        INTEGER,          -- api-sports.io team ID
 
     -- FPL strength ratings (used in scoring model)
     strength_overall_home    INTEGER,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS players (
     known_name                   VARCHAR(100),          -- FPL: known_name (e.g. "Salah" vs "Mohamed Salah")
     position                     VARCHAR(3),            -- GKP, DEF, MID, FWD (derived from element_type on insert)
     fpl_player_id                INTEGER UNIQUE,        -- FPL API: elements[].id
-    apisports_player_id          INTEGER,               -- api-sports.io player ID
+  --apisports_player_id          INTEGER,               -- api-sports.io player ID
 
     -- Availability
     player_status                VARCHAR(1),            -- FPL: 'a' available, 'd' doubtful, 'i' injured, 's' suspended, 'u' unavailable
@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS players (
 CREATE TABLE IF NOT EXISTS fixtures (
     fixture_id              SERIAL PRIMARY KEY,
     league_id               INTEGER REFERENCES leagues(league_id),
-    fpl_fixture_id          INTEGER UNIQUE,             -- FPL API: fixtures[].id (PL only, null for other leagues)
-    apisports_fixture_id    INTEGER,                    -- api-sports.io fixture ID
+  --fpl_fixture_id          INTEGER UNIQUE,             -- FPL API: fixtures[].id (PL only, null for other leagues)
+  --apisports_fixture_id    INTEGER,                    -- api-sports.io fixture ID
     home_team_id            INTEGER REFERENCES teams(team_id),
     away_team_id            INTEGER REFERENCES teams(team_id),
     gameweek                INTEGER,                    -- FPL: event id / matchday number

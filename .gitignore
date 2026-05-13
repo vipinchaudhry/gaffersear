@@ -223,3 +223,15 @@ __marimo__/
 # doesnt need to be in github
 fpl_bootstrap.json
 fpl_fixtures.json
+
+# json files to look at and explore apisports data
+
+explore_apisports.py
+bundesliga_data.json
+pl_player_data.json
+pl_data.json
+
+bundesliga_player_data.json
+laliga_player_data.json
+ligue1_player_data.json
+serieA_palyer_data.json

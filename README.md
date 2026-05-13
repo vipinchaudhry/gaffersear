@@ -1,6 +1,6 @@
 # Gaffer's Ear
 
-A football analytics platform for fans across Europe's top 5 leagues — Premier League, Bundesliga, La Liga, Ligue 1, and Serie A. The core feature is opinionated player picks for Fantasy Football, scored by a rule-based model that weighs recent form, upcoming fixture difficulty, home/away advantage, and player availability. No account needed to use the core product.
+A football analytics platform for fans in the Premier League. The core feature is opinionated player picks for Fantasy Football, scored by a rule-based model that weighs recent form, upcoming fixture difficulty, home/away advantage, and player availability. No account needed to use the core product.
 
 ---
 
@@ -24,7 +24,7 @@ A football analytics platform for fans across Europe's top 5 leagues — Premier
 ## Architecture
 
 ### Flow 1 — Data ingestion (background, scheduled)
-A Python pipeline fetches from the FPL API and football-data.org on a schedule. It cleans and transforms the data, calculates form scores, and writes directly to PostgreSQL. This runs independently of the backend — the API is never involved in data ingestion.
+A Python pipeline fetches from the FPL API on a schedule. It cleans and transforms the data, calculates form scores, and writes directly to PostgreSQL. This runs independently of the backend — the API is never involved in data ingestion.
 
 ### Flow 2 — User loads the app
 The React frontend makes HTTP requests to FastAPI. FastAPI checks Redis first. On a cache miss it queries PostgreSQL, applies the scoring model, and returns JSON. React renders the result. The browser never talks to the database directly.
