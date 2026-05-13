@@ -38,7 +38,7 @@ Supabase Auth handles the full OAuth flow in the browser. The resulting JWT is s
 | Table | What it stores |
 |-------|---------------|
 | leagues | Supported leagues — name, code (e.g. PL), country |
-| teams | Club data, mapped to IDs from both external APIs |
+| teams | Club data, mapped to IDs from (both) external APIs |
 | players | Player records — position, availability, FPL (and external API IDs potentially in V2) |
 | fixtures | Match data — date, gameweek, home/away difficulty ratings (1–5), result |
 | player_stats | Per-match stats — goals, assists, minutes, cards, calculated form score |
