@@ -67,7 +67,7 @@ Upsert behavior: On fpl_fixture_id conflict UPDATE fixture_status, home_score, a
 | team_a_difficulty | away_difficulty |  |
 | team_h_score | home_score |  |
 | team_a_score | away_score |  |
-| finished, start (bools) | fixture_status | AND/OR gates to determine scheduled, in_progress, finished |
+| finished, started (bools) | fixture_status | AND/OR gates to determine scheduled, in_progress, finished |
 | fixture_id | fpl_fixture_id |  |
 
 
