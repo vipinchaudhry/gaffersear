@@ -240,3 +240,5 @@ testing_folder/
 
 # virtual environment
 gearvenv/
+
+.vscode/
