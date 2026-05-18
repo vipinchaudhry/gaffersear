@@ -237,3 +237,6 @@ ligue1_player_data.json
 serieA_player_data.json
 
 testing_folder/
+
+# virtual environment
+gearvenv/
