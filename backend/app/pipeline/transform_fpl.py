@@ -1,7 +1,7 @@
 from datetime import datetime
 import time
 
-def parse_teams(bootstrap_data_raw):
+def transform_teams(bootstrap_data_raw):
     # bootstrap_data_raw returns a dictionary. one of those keys is teams. 
     # the value of teams is a list of dictionaries
     
@@ -27,33 +27,9 @@ def parse_teams(bootstrap_data_raw):
 
     return teams_data_transformed #this is a list of dictionaries
 
-"""
-| FPL Field | Database Column | Transformation |
-|-----------|-----------------|----------------|
-| (generated) | player_id | Auto |
-| elements[].team | team_id | Match fpl_team_id in teams, store internal team_id |
-| first_name, second_name | player_name | string concatenation |
-| web_name | known_name |  |  |
-| element_type | position | 1→GKP, 2→DEF, 3→MID, 4→FWD |
-| id | fpl_player_id |  |
-| status | player_status |  |
-| chance_of_playing_this_round | chance_of_playing_this_round |  |
-| chance_of_playing_next_round | chance_of_playing_next_round |  |
-| news | news |  |  |
-| form | form | Cast string -> float |
-| points_per_game | points_per_game | Cast string -> float |
-| total_points | total_points |  |
-| now_cost | now_cost | Divide by 10 -> store as float |
-| selected_by_percent | selected_by_percent | Cast string -> float |
-| expected_goals | expected_goals | Cast string -> float |
-| expected_assists | expected_assists | Cast string -> float |
-| expected_goal_involvements | expected_goal_involvements | Cast string -> float |
-| expected_goals_conceded | expected_goals_conceded | Cast string -> float |
 
 
-"""
-
-def parse_players(bootstrap_data_raw):
+def transform_players(bootstrap_data_raw):
     # bootstrap_data_raw returns a dictionary
     # one of those keys is elements (this refers to players, but its called elements for some reason)
     # other keys realted to this is element_stats, element_types
@@ -86,7 +62,7 @@ def parse_players(bootstrap_data_raw):
             "chance_of_playing_next_round": player["chance_of_playing_next_round"],
             "news"                        : player["news"],
             "form"                        : float(player["form"]),
-            "points_per_game"             : player["points_per_game"],
+            "points_per_game"             : float(player["points_per_game"]),
             "total_points"                : float(player["total_points"]),
             "now_cost"                    : float(player["now_cost"]) / 10,
             "selected_by_percent"         : float(player["selected_by_percent"]),
@@ -100,7 +76,7 @@ def parse_players(bootstrap_data_raw):
     
     return player_data_transformed # this is a list of dictionaries
 
-def parse_fixtures(fixtures_data_raw):
+def transform_fixtures(fixtures_data_raw):
     # fixtures_data_raw is a list of dictionaries.
     # writing for fixture in fixtures_data_raw -> each fixture is a dictionary
     # we return another list of dictionaries fixture_data_transformed
@@ -150,12 +126,13 @@ if __name__ == "__main__":
     from fetch_fpl import fetch_bootstrap
     from fetch_fpl import fetch_fixtures
 
+    import pprint
+    
+
     bootstrap_data_raw = fetch_bootstrap()
     fixtures_data_raw   = fetch_fixtures()
 
-    print(parse_teams(bootstrap_data_raw))
-
-    print(parse_players(bootstrap_data_raw))
-
-    print(parse_fixtures(fixtures_data_raw))
+    pprint.pprint(transform_teams(bootstrap_data_raw)[:2])
+    pprint.pprint(transform_players(bootstrap_data_raw)[:2])
+    pprint.pprint(transform_fixtures(fixtures_data_raw)[:2])
 
