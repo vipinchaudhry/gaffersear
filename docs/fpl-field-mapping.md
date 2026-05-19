@@ -63,6 +63,7 @@ Upsert behavior: On fpl_fixture_id conflict UPDATE fixture_status, home_score, a
 | team_h | home_team_id | Lookup team_id on Teams table |
 | team_a | away_team_id | Lookup team_id on Teams table |
 | event | gameweek |  |
+| kickoff_time | match_date |  |
 | team_h_difficulty | home_difficulty |  |
 | team_a_difficulty | away_difficulty |  |
 | team_h_score | home_score |  |
